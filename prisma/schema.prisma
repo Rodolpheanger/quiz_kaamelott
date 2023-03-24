@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model actors {
+  actors_id   Int          @id @default(autoincrement())
+  actors_name String       @db.VarChar(100)
+  characters  characters[]
+
+  @@map("actors")
+}
+
+model authors {
+  authors_id   Int        @id @default(autoincrement())
+  authors_name String     @db.VarChar(100)
+  episodes     episodes[]
+
+  @@map("authors")
+}
+
+model characters {
+  characters_id       Int      @id @default(autoincrement())
+  characters_name     String   @db.VarChar(100)
+  characters_pic      String?
+  characters_refactor Int
+  actors              actors   @relation(fields: [characters_refactor], references: [actors_id], onDelete: Cascade)
+  quotes              quotes[]
+
+  @@map("characters")
+}
+
+model episodes {
+  episodes_id        Int      @id @default(autoincrement())
+  episodes_num       Int?
+  episodes_name      String   @db.VarChar(100)
+  episodes_refauthor Int
+  episodes_refseason Int
+  authors            authors  @relation(fields: [episodes_refauthor], references: [authors_id], onDelete: Cascade)
+  seasons            seasons  @relation(fields: [episodes_refseason], references: [seasons_id], onDelete: Cascade)
+  quotes             quotes[]
+
+  @@map("episodes")
+}
+
+model quotes {
+  quotes_id             Int        @id @default(autoincrement())
+  quotes_text           String     @db.VarChar
+  quotes_refepisode     Int
+  quotes_refcharacter   Int
+  quotes_counter_random Int        @default(0)
+  characters            characters @relation(fields: [quotes_refcharacter], references: [characters_id], onDelete: Cascade)
+  episodes              episodes   @relation(fields: [quotes_refepisode], references: [episodes_id], onDelete: Cascade)
+
+  @@map("quotes")
+}
+
+model seasons {
+  seasons_id   Int        @id @default(autoincrement())
+  seasons_name String     @db.VarChar(100)
+  seasons_num  Int
+  episodes     episodes[]
+
+  @@map("seasons")
+}

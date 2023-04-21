@@ -48,10 +48,10 @@ export const ChoicesForm = () => {
       )}
       {!isSubmitted && (
         <form
-          className="flex flex-col items-center justify-center gap-12 p-8"
+          className="flex flex-col items-center justify-center gap-12"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="flex flex-col items-center gap-6 font-semibold sm:flex-row">
+          <div className="flex flex-col items-center font-semibold md:gap-6 sm:w-full sm:flex-row">
             {data?.randomCharacters.map(
               (character: Character, index: number) => {
                 return (
@@ -68,7 +68,9 @@ export const ChoicesForm = () => {
                     />
                     <label
                       htmlFor={`choice${index}`}
-                      className="px-4 py-2 text-center border-2 border-gray-500 rounded-md cursor-pointer bg-zinc-50 hover:bg-gray-200 peer-checked:bg-gray-400 peer-checked:border-black"
+                      // TODO: voir pour la border top du first label en mobile seulement (ne fonctionne pas encore)
+
+                      className="w-screen px-4 py-2 text-center border-2 divide-x-2 cursor-pointer first:border-t-gray-500 border-b-gray-500 md:border-gray-500 md:rounded-md md:w-auto bg-zinc-50 hover:bg-gray-200 peer-checked:bg-gray-400 peer-checked:border-black"
                     >
                       {character.characters_name}
                     </label>

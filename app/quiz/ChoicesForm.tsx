@@ -10,6 +10,11 @@ type FormData = {
   characterId: string;
 };
 
+type Character = {
+  characters_id: number;
+  characters_name: string;
+};
+
 export const ChoicesForm = () => {
   const { register, handleSubmit, reset } = useForm<FormData>();
   const { data, userChoice, setUserChoice, isRefetching } = useRandomQuote();
@@ -37,7 +42,7 @@ export const ChoicesForm = () => {
   return (
     <div>
       {isRefetching && (
-        <p className="text-2xl p-8 md:text-4xl md:p-8 text-center">
+        <p className="p-8 text-2xl text-center md:text-4xl md:p-8">
           Attend chevalier, j&apos;en cherche une autre...
         </p>
       )}
@@ -47,28 +52,30 @@ export const ChoicesForm = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="flex flex-col items-center gap-6 font-semibold sm:flex-row">
-            {data?.randomCharacters.map((character, index) => {
-              return (
-                <div
-                  className="flex"
-                  key={index}
-                >
-                  <input
-                    {...register("characterId")}
-                    type="radio"
-                    value={character.characters_id}
-                    id={`choice${index}`}
-                    className="hidden peer"
-                  />
-                  <label
-                    htmlFor={`choice${index}`}
-                    className="px-4 py-2 text-center border-2 border-gray-500 rounded-md cursor-pointer bg-zinc-50 hover:bg-gray-200 peer-checked:bg-gray-400 peer-checked:border-black"
+            {data?.randomCharacters.map(
+              (character: Character, index: number) => {
+                return (
+                  <div
+                    className="flex"
+                    key={index}
                   >
-                    {character.characters_name}
-                  </label>
-                </div>
-              );
-            })}
+                    <input
+                      {...register("characterId")}
+                      type="radio"
+                      value={character.characters_id}
+                      id={`choice${index}`}
+                      className="hidden peer"
+                    />
+                    <label
+                      htmlFor={`choice${index}`}
+                      className="px-4 py-2 text-center border-2 border-gray-500 rounded-md cursor-pointer bg-zinc-50 hover:bg-gray-200 peer-checked:bg-gray-400 peer-checked:border-black"
+                    >
+                      {character.characters_name}
+                    </label>
+                  </div>
+                );
+              }
+            )}
           </div>
           <input
             type="submit"

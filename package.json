@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 5174",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "preview": "next build & next start"
+    "preview": "next build & next start",
+    "prisma:generate": "prisma generate",
+    "test": "vitest"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.11",
@@ -27,9 +29,23 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "@testing-library/dom": "^9.2.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/testing-library__jest-dom": "^5.14.5",
+    "@vitejs/plugin-react": "^4.0.0",
     "autoprefixer": "^10.4.14",
+    "cross-fetch": "^3.1.5",
+    "jest-dom": "link:@types/testing-library/jest-dom",
+    "jsdom": "^21.1.1",
+    "msw": "^1.2.1",
     "postcss": "^8.4.21",
     "prisma": "^4.11.0",
-    "tailwindcss": "^3.2.7"
+    "tailwindcss": "^3.2.7",
+    "type": "github:testing-library/user-event",
+    "vitest": "^0.30.1",
+    "vitest-fetch-mock": "^0.2.1"
   }
 }

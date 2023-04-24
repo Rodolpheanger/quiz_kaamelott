@@ -51,7 +51,7 @@ export const ChoicesForm = () => {
           className="flex flex-col items-center justify-center gap-12 "
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="flex flex-col items-center justify-center font-semibold border-2 divide-y-2 divide-gray-500 border-y-gray-500 sm:divide-none sm:border-none sm:gap-6 md:w-auto md:flex-row">
+          <div className="flex flex-col items-center justify-center font-semibold border-2 divide-y-2 divide-gray-500 border-y-gray-500 sm:divide-none sm:border-none sm:gap-6 md:w-auto sm:flex-row">
             {data?.randomCharacters.map(
               (character: Character, index: number) => {
                 return (

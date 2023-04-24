@@ -12,7 +12,7 @@ export const Response = ({ quoteId, choice }: ResponseProps) => {
   const isWin = data?.characters.characters_id === choice;
 
   return (
-    <p className="text-2xl font-semibold text-center">
+    <p className="text-xl font-semibold text-center md:text-2xl">
       {isLoading && "..."}
       {isError &&
         "Ah ben merde alors... pas moyen de me rappeler qui a dit ça..."}

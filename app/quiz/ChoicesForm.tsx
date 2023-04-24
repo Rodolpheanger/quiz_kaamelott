@@ -68,8 +68,6 @@ export const ChoicesForm = () => {
                     />
                     <label
                       htmlFor={`choice${index}`}
-                      // TODO: voir pour la border top du first label en mobile seulement (ne fonctionne pas encore)
-
                       className="w-screen px-4 py-2 text-center cursor-pointer sm:border-2 sm:w-full sm:border-gray-500 sm:rounded-md md:w-auto bg-zinc-50 hover:bg-gray-200 peer-checked:bg-gray-400 peer-checked:border-black"
                     >
                       {character.characters_name}
@@ -88,7 +86,7 @@ export const ChoicesForm = () => {
       )}
 
       {isSubmitted && !isNewQuestion && (
-        <div className="flex flex-col items-center justify-center gap-12 p-10">
+        <div className="flex flex-col items-center justify-center gap-12 p-10 pt-0">
           <Response
             quoteId={Number(quoteId)}
             choice={Number(userChoice)}

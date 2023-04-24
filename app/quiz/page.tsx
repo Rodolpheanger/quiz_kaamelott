@@ -1,4 +1,4 @@
-import { RandomQuote } from "~/app/quiz/RandomQuote";
+import { RandomQuote } from "./RandomQuote";
 import { ChoicesForm } from "./ChoicesForm";
 
 export default function Quiz() {

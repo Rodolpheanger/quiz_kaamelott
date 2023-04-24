@@ -3,6 +3,7 @@ import { cleanup } from "@testing-library/react";
 import { fetch } from "cross-fetch";
 import { afterAll, afterEach, beforeAll, beforeEach, expect } from "vitest";
 import { server } from "./server";
+import { router } from "./router";
 
 expect.extend(matchers);
 
@@ -13,11 +14,13 @@ beforeEach(() => {
   // clean the dom with @react-testing-library
   // https://testing-library.com/docs/react-testing-library/api#cleanup
   cleanup();
+
+  // Mock of the router
+  router();
 });
 
 afterEach(() => {
   server.resetHandlers();
-  // mock
 });
 
 // Start server before all tests

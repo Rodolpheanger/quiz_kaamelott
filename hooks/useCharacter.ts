@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { z } from "zod";
+import { prefixedFetch } from "~/lib/prefixedFetch";
 
 const CharacterSchema = z.object({
   characters: z.object({
@@ -9,7 +10,7 @@ const CharacterSchema = z.object({
 });
 
 const fetchQuoteById = async (quoteId: number) => {
-  return fetch(`/api/quote/${quoteId}`)
+  return prefixedFetch(`/api/quote/${quoteId}`)
     .then((res) => res.json())
     .then((json) => CharacterSchema.parse(json));
 };

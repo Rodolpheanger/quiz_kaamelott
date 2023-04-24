@@ -2,6 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { z } from "zod";
+import { prefixedFetch } from "~/lib/prefixedFetch";
 
 const RandomQuoteSchema = z.object({
   randomQuote: z.object({ id: z.number(), text: z.string() }),
@@ -12,9 +13,8 @@ const RandomQuoteSchema = z.object({
     })
   ),
 });
-
-const fetchRandomQuote = async () => {
-  return fetch(`/api/quote`)
+export const fetchRandomQuote = async () => {
+  return prefixedFetch(`/api/quote`)
     .then((res) => res.json())
     .then((json) => RandomQuoteSchema.parse(json));
 };

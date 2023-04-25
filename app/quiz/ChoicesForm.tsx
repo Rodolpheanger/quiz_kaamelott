@@ -3,6 +3,7 @@ import { useRandomQuote } from "~/hooks/useRandomQuote";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Response } from "./Response";
 import { useNewQuestion } from "~/hooks/useNewQuestion";
+import { useState } from "react";
 
 export const dynamic = "force-dynamic";
 
@@ -16,6 +17,7 @@ type Character = {
 };
 
 export const ChoicesForm = () => {
+  const [isChecked, setIsChecked] = useState(false);
   const { register, handleSubmit, reset } = useForm<FormData>();
   const { data, userChoice, setUserChoice, isRefetching } = useRandomQuote();
   const {
@@ -28,6 +30,10 @@ export const ChoicesForm = () => {
 
   const quoteId = data?.randomQuote.id;
 
+  const handleRadioClick = () => {
+    setIsChecked(true);
+  };
+
   const onSubmit: SubmitHandler<FormData> = (choice) => {
     setIsSubmitted(true);
     setIsNewQuestion(false);
@@ -37,12 +43,13 @@ export const ChoicesForm = () => {
   const resetForm = () => {
     getNewQuestion();
     reset();
+    setIsChecked(false);
   };
 
   return (
     <div>
       {isRefetching && (
-        <p className="p-8 text-2xl text-center md:text-4xl md:p-8">
+        <p className="p-8 text-xl text-center md:text-2xl md:p-8">
           Attend chevalier, j&apos;en cherche une autre...
         </p>
       )}
@@ -65,6 +72,7 @@ export const ChoicesForm = () => {
                       value={character.characters_id}
                       id={`choice${index}`}
                       className="hidden peer"
+                      onClick={handleRadioClick}
                     />
                     <label
                       htmlFor={`choice${index}`}
@@ -78,6 +86,7 @@ export const ChoicesForm = () => {
             )}
           </div>
           <input
+            disabled={!isChecked}
             type="submit"
             className="px-4 py-2 font-semibold text-white rounded-md bg-slate-900 hover:bg-slate-600 hover:cursor-pointer"
             value="Valider"

@@ -6,7 +6,6 @@ import { expect } from "vitest";
 
 test("renders RandomQuote and ChoicesForm components", async () => {
   customRender(<Quiz />);
-  screen.debug();
   const RandomQuote = screen.getByText(/patiente/i);
   const ChoicesForm = screen.getByRole("button", { name: /valider/i });
   expect(RandomQuote).toBeInTheDocument();

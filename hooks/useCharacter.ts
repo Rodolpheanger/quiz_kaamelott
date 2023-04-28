@@ -9,7 +9,7 @@ const CharacterSchema = z.object({
   }),
 });
 
-const fetchQuoteById = async (quoteId: number) => {
+export const fetchQuoteById = async (quoteId: number) => {
   return prefixedFetch(`/api/quote/${quoteId}`)
     .then((res) => res.json())
     .then((json) => CharacterSchema.parse(json));

@@ -1,7 +1,9 @@
 import { rest } from "msw";
 
+const prefix = "http://localhost:5174";
+
 export const restHandlers = [
-  rest.get("http://localhost:5174/api/quote", async (req, res, ctx) => {
+  rest.get(`${prefix}/api/quote`, async (req, res, ctx) => {
     return res(
       ctx.json({
         randomQuote: { id: 1, text: "Excalibur" },

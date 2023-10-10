@@ -7,6 +7,4 @@
 
 ## Pas encore de copie de la BDD dispo
 
-Du coup difficile de tester 😥
-
 ## Mais ça viendra, _"patience est mère de famille !"_

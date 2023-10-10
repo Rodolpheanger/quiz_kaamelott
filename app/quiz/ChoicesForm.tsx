@@ -49,7 +49,7 @@ export const ChoicesForm = () => {
   return (
     <div>
       {isRefetching && (
-        <p className="p-8 text-xl text-center md:text-2xl md:p-8">
+        <p className="p-8 text-xl text-center md:text-2xl md:h-[140px]">
           Attend chevalier, j&apos;en cherche une autre...
         </p>
       )}

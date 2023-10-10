@@ -55,7 +55,7 @@ export const ChoicesForm = () => {
       )}
       {!isSubmitted && (
         <form
-          className="flex flex-col items-center justify-center gap-12 "
+          className="flex flex-col items-center justify-center gap-12"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="flex flex-col items-center justify-center font-semibold border-2 divide-y-2 divide-gray-500 border-y-gray-500 sm:divide-none sm:border-none sm:gap-6 md:w-auto sm:flex-row">
@@ -76,7 +76,7 @@ export const ChoicesForm = () => {
                     />
                     <label
                       htmlFor={`choice${index}`}
-                      className="w-screen px-4 py-2 text-center cursor-pointer sm:border-2 sm:w-full sm:border-gray-500 sm:rounded-md md:w-auto bg-zinc-50 hover:bg-gray-200 peer-checked:bg-gray-400 peer-checked:border-black"
+                      className="w-screen px-4 py-2 text-center cursor-pointer sm:border-2 sm:w-full md:text-xl sm:border-gray-500 sm:rounded-md md:w-auto bg-zinc-50 hover:bg-gray-200 peer-checked:bg-gray-400 peer-checked:border-black"
                     >
                       {character.characters_name}
                     </label>
@@ -88,14 +88,14 @@ export const ChoicesForm = () => {
           <input
             disabled={!isChecked}
             type="submit"
-            className="px-4 py-2 font-semibold text-white rounded-md bg-slate-900 hover:bg-slate-600 hover:cursor-pointer"
+            className="px-4 py-2 font-semibold text-white rounded-md bg-slate-900 hover:bg-slate-600 hover:cursor-pointer md:text-xl md:w-28"
             value="Valider"
           />
         </form>
       )}
 
       {isSubmitted && !isNewQuestion && (
-        <div className="flex flex-col items-center justify-center gap-12 p-10 pt-0">
+        <div className="flex flex-col items-center justify-between gap-12">
           <Response
             quoteId={Number(quoteId)}
             choice={Number(userChoice)}
@@ -103,7 +103,7 @@ export const ChoicesForm = () => {
           <button
             type="button"
             onClick={() => resetForm()}
-            className="px-4 py-2 font-semibold text-white rounded-md bg-slate-900 hover:bg-slate-600 hover:cursor-pointer"
+            className="px-4 py-2 font-semibold text-white rounded-md md:text-xl bg-slate-900 hover:bg-slate-600 hover:cursor-pointer md:w-28"
           >
             Rejouer
           </button>

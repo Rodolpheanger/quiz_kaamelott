@@ -12,7 +12,7 @@ export const Response = ({ quoteId, choice }: ResponseProps) => {
   const isWin = data?.characters.characters_id === choice;
 
   return (
-    <p className="text-xl font-semibold text-center md:text-2xl">
+    <div className="flex flex-col justify-center py-2 text-xl font-semibold text-center align-middle md:text-2xl">
       {isLoading && "..."}
       {isError &&
         "Ah ben merde alors... pas moyen de me rappeler qui a dit ça..."}
@@ -21,6 +21,6 @@ export const Response = ({ quoteId, choice }: ResponseProps) => {
       {!isLoading &&
         !isWin &&
         `Aie, aie, aie, la boulette, c'est ${data?.characters.characters_name} qui a dit ça !`}
-    </p>
+    </div>
   );
 };
